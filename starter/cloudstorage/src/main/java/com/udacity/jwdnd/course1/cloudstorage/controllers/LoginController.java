@@ -8,6 +8,7 @@ import com.udacity.jwdnd.course1.cloudstorage.validateGroup.LoginGroup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,15 +16,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.Map;
 
 @Controller
-@RequestMapping( path = {"/login"})
+@RequestMapping(path = {"/login"})
+//@SessionAttributes("userLogin")
 public class LoginController {
 
     private Logger logger = LoggerFactory.getLogger(LoginController.class);
@@ -41,19 +42,11 @@ public class LoginController {
     }
 
     @GetMapping
-    public String executedPageLogin(@ModelAttribute("userLogin") User user, BindingResult result,  Model model) {
-
+    public String executedPageLogin(@ModelAttribute("userLogin") User user, BindingResult result, HttpServletRequest request, Model model) {
         logger.debug("open login page");
-        return "login";
-    }
-
-    @PostMapping
-    public String executedLogin(@ModelAttribute("userLogin") @Validated(LoginGroup.class)  User user, BindingResult result, Model model) {
-
-        if (result.hasErrors()) {
-            logger.error("has error on input user");
-            return "forward:/authenticated";
-        }
+        Map param = request.getParameterMap();
+        model.addAttribute("error", request.getParameter("error"));
+        model.addAttribute("justLogout", request.getParameter("logout"));
         return "login";
     }
 }

@@ -6,6 +6,9 @@ public class Note {
     private String notedescription;
     private Integer userid;
 
+    public Note() {
+    }
+
     public Note(Integer noteid, String notetitle, String notedescription, Integer userid) {
         this.noteid = noteid;
         this.notetitle = notetitle;
@@ -27,5 +30,21 @@ public class Note {
 
     public void setNoteid(Integer noteid) {
         this.noteid = noteid;
+    }
+
+    public String getNotedescription() {
+        return notedescription;
+    }
+
+    public void setNotedescription(String notedescription) {
+        this.notedescription = notedescription;
+    }
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 }

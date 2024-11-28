@@ -11,16 +11,16 @@ public class User {
 
     @NotBlank(message = "Name must be required", groups = LoginGroup.class)
     @Size(max = 20, message = "Name must not exceed 50 characters", groups = LoginGroup.class)
-    private String username ;
+    private String username;
 
-    private String salt ;
+    private String salt;
 
     @NotBlank(message = "Password must be required", groups = LoginGroup.class)
-    private String password ;
+    private String password;
 
-    private String firstname ;
+    private String firstname;
 
-    private String lastname ;
+    private String lastname;
 
 
     public User() {
