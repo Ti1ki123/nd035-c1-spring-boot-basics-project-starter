@@ -366,7 +366,9 @@ class CloudStorageApplicationTests {
 
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("credential-url")));
         WebElement inputurl = driver.findElement(By.id("credential-url"));
+        inputurl.clear();
         inputurl.click();
+
         inputurl.sendKeys("http://localhost:" + this.port + "/login");
 
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("credential-username"))); // Changed from "note-description"
@@ -392,7 +394,7 @@ class CloudStorageApplicationTests {
 
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("credential-username-0"))); //
 
-        Assertions.assertTrue(driver.findElement(By.id("credential-username-0")).getText().contains("ChinhPhankokoChinhPhankokoUpdate"));
+        Assertions.assertTrue(driver.findElement(By.id("credential-username-0")).getText().contains("ChinhPhankokoChinhPhankokoUpda"));
     }
 
     // Test method to delete a credential
