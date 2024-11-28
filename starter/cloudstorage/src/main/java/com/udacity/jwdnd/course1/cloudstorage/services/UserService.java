@@ -25,7 +25,7 @@ public class UserService {
     public int createUser(User user) {
         SecureRandom random = new SecureRandom();
         User checkuser = userMapper.getUser(user.getUsername());
-        if (checkuser == null) {
+        if (checkuser != null) {
             return -1;
         }
         byte[] salt = new byte[16];

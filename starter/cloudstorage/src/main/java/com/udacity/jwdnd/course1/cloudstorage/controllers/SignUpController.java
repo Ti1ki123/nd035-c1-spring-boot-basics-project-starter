@@ -39,8 +39,10 @@ public class SignUpController {
         int result = userService.createUser(user);
         if (result < 0) {
             model.addAttribute("messages","User is existed");
+            model.addAttribute("error",true);
             return "signup";
         }
-        return "redirect:/login";
+        model.addAttribute("success",true);
+        return "signup";
     }
 }
