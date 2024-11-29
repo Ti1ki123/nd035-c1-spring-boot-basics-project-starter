@@ -18,6 +18,9 @@
         <div th:if="${justLogout}" id="logout-message" class="alert alert-dark">
             You have been logged out
         </div>
+        <div th:if="${signup}" id="success-msg" class="alert alert-dark">
+            You successfully signed up!
+        </div>
         <div class="form-group">
             <label for="inputUsername">Username</label>
             <input type="text" class="form-control" th:field="*{username}" id="inputUsername"

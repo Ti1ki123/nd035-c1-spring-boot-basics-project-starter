@@ -47,6 +47,7 @@ public class LoginController {
         Map param = request.getParameterMap();
         model.addAttribute("error", request.getParameter("error"));
         model.addAttribute("justLogout", request.getParameter("logout"));
+        model.addAttribute("signup", request.getParameter("signup"));
         return "login";
     }
 }
